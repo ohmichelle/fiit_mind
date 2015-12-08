@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @weight_loss_model.errors.any? %>
+  <% @weight_loss_model.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Weight Loss Model</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_weight_loss_model" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for coefficient_fullness -->
+      <div class="form-group">
+        <label for="coefficient_fullness" class="control-label">
+          Coefficient fullness
+        </label>
+
+        <input type="text" id="coefficient_fullness" name="coefficient_fullness" placeholder="Coefficient fullness" class="form-control" value="<%= @weight_loss_model.coefficient_fullness %>">
+      </div>
+
+      <!-- Label and input for intercept -->
+      <div class="form-group">
+        <label for="intercept" class="control-label">
+          Intercept
+        </label>
+
+        <input type="text" id="intercept" name="intercept" placeholder="Intercept" class="form-control" value="<%= @weight_loss_model.intercept %>">
+      </div>
+
+      <!-- Label and input for model_version -->
+      <div class="form-group">
+        <label for="model_version" class="control-label">
+          Model version
+        </label>
+
+        <input type="text" id="model_version" name="model_version" placeholder="Model version" class="form-control" value="<%= @weight_loss_model.model_version %>">
+      </div>
+
+      <!-- Label and input for model_end_date -->
+      <div class="form-group">
+        <label for="model_end_date" class="control-label">
+          Model end date
+        </label>
+
+        <input type="text" id="model_end_date" name="model_end_date" placeholder="Model end date" class="form-control" value="<%= @weight_loss_model.model_end_date %>">
+      </div>
+
+      <!-- Label and input for model_start_date -->
+      <div class="form-group">
+        <label for="model_start_date" class="control-label">
+          Model start date
+        </label>
+
+        <input type="text" id="model_start_date" name="model_start_date" placeholder="Model start date" class="form-control" value="<%= @weight_loss_model.model_start_date %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @weight_loss_model.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Weight Loss Model
+      </button>
+      or
+      <a href="/weight_loss_models">Cancel</a>
+    </form>
+  </div>
+</div>

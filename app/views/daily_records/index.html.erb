@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>
+    Daily records
+    <a href="/daily_records/new" class="btn btn-lg btn-success">New Daily record</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Weight loss probability</th>
+        <th>Average fullness</th>
+        <th>Date</th>
+        <th>User</th>
+        <th>Weight</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @daily_records.each do |daily_record| %>
+      <tr>
+        <td><%= daily_record.weight_loss_probability %></td>
+        <td><%= daily_record.average_fullness %></td>
+        <td><%= daily_record.date %></td>
+        <td><%= daily_record.user_id %></td>
+        <td><%= daily_record.weight %></td>
+        <td>
+          <a href="/daily_records/<%= daily_record.id %>" class="btn btn-primary">Show</a>
+          <a href="/daily_records/<%= daily_record.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_daily_record/<%= daily_record.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

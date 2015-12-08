@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3>Weight Loss Model #<%= @weight_loss_model.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Coefficient fullness</dt>
+      <dd><%= @weight_loss_model.coefficient_fullness %></dd>
+
+      <dt>Intercept</dt>
+      <dd><%= @weight_loss_model.intercept %></dd>
+
+      <dt>Model version</dt>
+      <dd><%= @weight_loss_model.model_version %></dd>
+
+      <dt>Model end date</dt>
+      <dd><%= @weight_loss_model.model_end_date %></dd>
+
+      <dt>Model start date</dt>
+      <dd><%= @weight_loss_model.model_start_date %></dd>
+
+      <dt>User</dt>
+      <dd><%= @weight_loss_model.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/weight_loss_models" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/weight_loss_models/<%= @weight_loss_model.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_weight_loss_model/<%= @weight_loss_model.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

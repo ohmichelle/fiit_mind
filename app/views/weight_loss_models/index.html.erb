@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>
+    Weight loss models
+    <a href="/weight_loss_models/new" class="btn btn-lg btn-success">New Weight loss model</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Coefficient fullness</th>
+        <th>Intercept</th>
+        <th>Model version</th>
+        <th>Model end date</th>
+        <th>Model start date</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @weight_loss_models.each do |weight_loss_model| %>
+      <tr>
+        <td><%= weight_loss_model.coefficient_fullness %></td>
+        <td><%= weight_loss_model.intercept %></td>
+        <td><%= weight_loss_model.model_version %></td>
+        <td><%= weight_loss_model.model_end_date %></td>
+        <td><%= weight_loss_model.model_start_date %></td>
+        <td><%= weight_loss_model.user_id %></td>
+        <td>
+          <a href="/weight_loss_models/<%= weight_loss_model.id %>" class="btn btn-primary">Show</a>
+          <a href="/weight_loss_models/<%= weight_loss_model.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_weight_loss_model/<%= weight_loss_model.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

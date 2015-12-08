@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @meal.errors.any? %>
+  <% @meal.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Meal #<%= @meal.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_meal/<%= @meal.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for position -->
+      <div class="form-group">
+        <label for="position" class="control-label">
+          Position
+        </label>
+
+        <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @meal.position %>">
+      </div>
+
+      <!-- Label and input for fullness_score -->
+      <div class="form-group">
+        <label for="fullness_score" class="control-label">
+          Fullness score
+        </label>
+
+        <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value="<%= @meal.fullness_score %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @meal.description %></textarea>
+      </div>
+
+      <!-- Label and input for daily_record_id -->
+      <div class="form-group">
+        <label for="daily_record_id" class="control-label">
+          Daily record
+        </label>
+
+        <input type="text" id="daily_record_id" name="daily_record_id" placeholder="Daily record" class="form-control" value="<%= @meal.daily_record_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Meal
+      </button>
+      or
+      <a href="/meals/<%= @meal.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

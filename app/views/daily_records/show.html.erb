@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Daily Record #<%= @daily_record.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Weight loss probability</dt>
+      <dd><%= @daily_record.weight_loss_probability %></dd>
+
+      <dt>Average fullness</dt>
+      <dd><%= @daily_record.average_fullness %></dd>
+
+      <dt>Date</dt>
+      <dd><%= @daily_record.date %></dd>
+
+      <dt>User</dt>
+      <dd><%= @daily_record.user_id %></dd>
+
+      <dt>Weight</dt>
+      <dd><%= @daily_record.weight %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/daily_records" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/daily_records/<%= @daily_record.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
