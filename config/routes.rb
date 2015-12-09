@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "meals#index"
+
   # Routes for the Meal resource:
   # CREATE
   get "/meals/new", :controller => "meals", :action => "new"
@@ -52,6 +53,17 @@ Rails.application.routes.draw do
   #------------------------------
 
   devise_for :users
+
+  # Routes for the User resource:
+  # READ
+  get "/users", :controller => "users", :action => "index"
+  #get "/users/:id", :controller => "users", :action => "show"
+
+  #get "/my_meals", :controller => "users", :action => "my_meals"
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
