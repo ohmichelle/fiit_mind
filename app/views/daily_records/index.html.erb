@@ -21,7 +21,7 @@
       <% @daily_records.each do |daily_record| %>
       <tr>
         <td><%= daily_record.id %></td>
-        <td><%= daily_record.user_id %></td>
+        <td><%= daily_record.user.username %></td>
         <td><%= daily_record.date %></td>
         <td><%= daily_record.weight %></td>
         <td><%= daily_record.average_fullness %></td>

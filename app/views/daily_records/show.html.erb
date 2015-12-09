@@ -5,20 +5,21 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      <dt>Weight loss probability</dt>
-      <dd><%= @daily_record.weight_loss_probability %></dd>
 
-      <dt>Average fullness</dt>
-      <dd><%= @daily_record.average_fullness %></dd>
+      <dt>User</dt>
+      <dd><%= @daily_record.user.username %></dd>
 
       <dt>Date</dt>
       <dd><%= @daily_record.date %></dd>
 
-      <dt>User</dt>
-      <dd><%= @daily_record.user_id %></dd>
-
       <dt>Weight</dt>
       <dd><%= @daily_record.weight %></dd>
+
+      <dt>Average fullness</dt>
+      <dd><%= @daily_record.average_fullness %></dd>
+
+      <dt>Weight loss probability</dt>
+      <dd><%= @daily_record.weight_loss_probability %></dd>
 
     </dl>
 
