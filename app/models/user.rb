@@ -15,4 +15,7 @@ class User < ActiveRecord::Base
   validates :dob, :presence => true
   validates :gender, :presence => true
 
+  has_many :weight_loss_models , :class_name => "WeightLossModel", :foreign_key => "user_id"
+  has_many :daily_records , :class_name => "DailyRecord", :foreign_key => "user_id"
+
 end

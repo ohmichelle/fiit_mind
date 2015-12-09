@@ -5,4 +5,6 @@ class WeightLossModel < ActiveRecord::Base
   validates :model_version, :presence => true, :numericality => {:only_integer => true, :greater_than => 0, :message => "must be greater than 0" }
   validates :model_start_date, :presence => true
   validates :model_end_date, :presence => true
+
+  belongs_to :user , :class_name => "User", :foreign_key => "user_id"
 end
