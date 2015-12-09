@@ -18,22 +18,13 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for weight_loss_probability -->
+      <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="weight_loss_probability" class="control-label">
-          Weight loss probability
+        <label for="user_id" class="control-label">
+          User
         </label>
 
-        <input type="text" id="weight_loss_probability" name="weight_loss_probability" placeholder="Weight loss probability" class="form-control" value="<%= @daily_record.weight_loss_probability %>">
-      </div>
-
-      <!-- Label and input for average_fullness -->
-      <div class="form-group">
-        <label for="average_fullness" class="control-label">
-          Average fullness
-        </label>
-
-        <input type="text" id="average_fullness" name="average_fullness" placeholder="Average fullness" class="form-control" value="<%= @daily_record.average_fullness %>">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @daily_record.user_id %>">
       </div>
 
       <!-- Label and input for date -->
@@ -45,15 +36,6 @@
         <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @daily_record.date %>">
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @daily_record.user_id %>">
-      </div>
-
       <!-- Label and input for weight -->
       <div class="form-group">
         <label for="weight" class="control-label">
@@ -61,6 +43,24 @@
         </label>
 
         <input type="text" id="weight" name="weight" placeholder="Weight" class="form-control" value="<%= @daily_record.weight %>">
+      </div>
+
+      <!-- Label and input for average_fullness -->
+      <div class="form-group">
+        <label for="average_fullness" class="control-label">
+          Average fullness
+        </label>
+
+        <input type="text" id="average_fullness" name="average_fullness" placeholder="Average fullness" class="form-control" value="<%= @daily_record.average_fullness %>">
+      </div>
+
+      <!-- Label and input for weight_loss_probability -->
+      <div class="form-group">
+        <label for="weight_loss_probability" class="control-label">
+          Weight loss probability
+        </label>
+
+        <input type="text" id="weight_loss_probability" name="weight_loss_probability" placeholder="Weight loss probability" class="form-control" value="<%= @daily_record.weight_loss_probability %>">
       </div>
 
       <button class="btn btn-warning">
