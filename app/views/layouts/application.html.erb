@@ -40,15 +40,32 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/meals">Meals</a></li>
-          <li><a href="/daily_records">Daily Records</a></li>
-          <li><a href="/weight_loss_models">Weight Loss Models</a></li>
+          <li><a href="/meals"><i class="fa fa-cutlery"></i>
+            <span class="hidden-sm">Meals</span></a>
+          </li>
+          <li><a href="/daily_records"><i class="fa fa-calendar"></i>
+            <span class="hidden-sm">Daily Records</span></a>
+          </li>
+          <li><a href="/weight_loss_models"><i class="fa fa-heart"></i>
+            <span class="hidden-sm">Weight Loss Models</span></a>
+          </li>
           <li><a href="/rails/info">Sitemap</a></li>
+
+          <% if user_signed_in? %>
+            <li><a href="/users/<%= current_user.id %>"><i class="fa fa-user"></i>
+              <span class="hidden-sm">My Data</span></a>
+            </li>
+          <% end %>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/edit">Dummy Edit Profile Link</a></li>
-          <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Dummy Sign Out Link</a></li>
+          <% if user_signed_in? %>
+            <li><a href="/users/edit"><i class="fa fa-pencil-square-o"></i><%= current_user.username %></a></li>
+            <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+          <% else %>
+            <li><a href="/users/sign_in">Sign In</a></li>
+            <li><a href="/users/sign_up">Sign Up</a></li>
+          <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>
@@ -56,14 +73,14 @@
 
   <div class="container">
     <% if notice.present? %>
-      <div class="alert alert-dismissable alert-success">
+      <div class="alert alert-dismissable alert-success col-md-8 col-md-offset-2">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <%= notice %>
       </div>
     <% end %>
 
     <% if alert.present? %>
-      <div class="alert alert-dismissable alert-warning">
+      <div class="alert alert-dismissable alert-warning col-md-8 col-md-offset-2">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <%= alert %>
       </div>
