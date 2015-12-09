@@ -48,10 +48,10 @@
       <!-- Label and input for daily_record_id -->
       <div class="form-group">
         <label for="daily_record_id" class="control-label">
-          Daily record
+          Date
         </label>
 
-        <input type="text" id="daily_record_id" name="daily_record_id" placeholder="Daily record" class="form-control" value="<%= @meal.daily_record_id %>">
+        <input type="text" id="date" name="date" placeholder="<%= Date.today %>" class="form-control" value="<%= Date.today %>">
       </div>
 
       <button class="btn btn-success">

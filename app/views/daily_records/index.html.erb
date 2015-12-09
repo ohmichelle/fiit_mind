@@ -9,6 +9,7 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Daily Record ID</th>
         <th>User</th>
         <th>Date</th>
         <th>Weight</th>
@@ -19,6 +20,7 @@
 
       <% @daily_records.each do |daily_record| %>
       <tr>
+        <td><%= daily_record.id %></td>
         <td><%= daily_record.user_id %></td>
         <td><%= daily_record.date %></td>
         <td><%= daily_record.weight %></td>
