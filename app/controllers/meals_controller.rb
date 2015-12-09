@@ -37,7 +37,8 @@ class MealsController < ApplicationController
     @meal.position = params[:position]
     @meal.fullness_score = params[:fullness_score]
     @meal.description = params[:description]
-    @meal.daily_record_id = params[:daily_record_id]
+
+    @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
 
     if @meal.save
       redirect_to "/meals", :notice => "Meal updated successfully."
