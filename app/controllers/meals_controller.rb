@@ -21,7 +21,7 @@ class MealsController < ApplicationController
     @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
 
     if @meal.save
-      redirect_to "/meals", :notice => "Meal created successfully."
+      redirect_to "/daily_records", :notice => "Meal created successfully."
     else
       render 'new'
     end

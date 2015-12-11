@@ -1,6 +1,11 @@
 class DailyRecordsController < ApplicationController
   def index
     @daily_records = DailyRecord.all
+    @meals = Meal.all
+    @daily_record = DailyRecord.new
+    @meal = Meal.new
+
+    @date = Date.today
   end
 
   def show
