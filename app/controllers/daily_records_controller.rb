@@ -18,17 +18,22 @@ class DailyRecordsController < ApplicationController
   end
 
   def create
-    @daily_record = DailyRecord.new
-    @daily_record.weight_loss_probability = params[:weight_loss_probability]
-    @daily_record.average_fullness = params[:average_fullness]
-    @daily_record.date = params[:date]
+    if current_user.daily_records.where(:date => params[:date])
+      @daily_record = DailyRecord.find_by(:date => params[:date])
+    else
+      @daily_record = DailyRecord.new
+    end
+
     @daily_record.user_id = params[:user_id]
+    @daily_record.date = params[:date]
     @daily_record.weight = params[:weight]
+    @daily_record.average_fullness = params[:average_fullness]
+    @daily_record.weight_loss_probability = params[:weight_loss_probability]
 
     if @daily_record.save
       redirect_to "/daily_records", :notice => "Daily record created successfully."
     else
-      render 'new'
+      render 'index'
     end
   end
 

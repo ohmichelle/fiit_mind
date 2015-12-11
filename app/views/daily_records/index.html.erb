@@ -1,39 +1,35 @@
 <div class="page-header">
-  <h1>
-    Track
-    <a href="/daily_records/new" class="btn btn-lg btn-success">New Daily record</a>
-  </h1>
+  <h1>Track</h1>
 </div>
 
 <!-- Add Daily Record -->
 <div class="row">
   <div class="col-md-12">
     <!-- Add new daily_record -->
-    <form action="/create_daily_record" method="post">
+    <form action="/create_daily_record" method="post" class="form-inline">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label"></label>
-
         <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
       </div>
 
-      <!-- Label and input for date -->
+      <!-- Label and input for date/calendar datepicker -->
       <div class="form-group">
-        <label for="date" class="control-label">
-          Date
-        </label>
+        <label for="date" class="control-label">Date</label>
 
-        <div class="input-group date" id='datepicker1'>
-         <input type="text" id="date" name="date" placeholder="Date" class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        <!-- <input type="text" id="date" name="date" placeholder="date" class="form-control" value="<%= @daily_record.date %>"> -->
+
+        <div class="input-group date" id='datepicker' data-date-format="yyyy-mm-dd">
+         <input type="text" id="date" name="date" placeholder="Date" class="form-control">
+         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
 
         <script type="text/javascript">
           $(function () {
-            $('#datepicker1').datepicker({todayBtn: "linked"});
-          });
+            $('#datepicker').datepicker({todayBtn: "linked"});
+            })
         </script>
       </div>
 
@@ -67,25 +63,25 @@
       <!-- Label and input for daily_record_id -->
       <div class="form-group">
         <label for="daily_record_id" class="control-label">Date</label>
-        <input type="text" id="date" name="date" placeholder="<%= @date %>" class="form-control" value="<%= @date %>">
+        <input type="text" id="date" name="date" placeholder="<%= @daily_record.date %>" class="form-control" value="<%= @date %>">
       </div>
 
       <!-- Label and input for meal number/position -->
       <div class="form-group">
         <label for="position" class="control-label">Position</label>
-          <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @meal.position %>">
+          <input type="text" id="position" name="position" placeholder="Position" class="form-control" value=" ">
       </div>
 
       <!-- Label and input for fullness_score -->
       <div class="form-group">
         <label for="fullness_score" class="control-label">Fullness score</label>
-          <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value="<%= @meal.fullness_score %>">
+          <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value=" ">
       </div>
 
       <!-- Label and input for description -->
       <div class="form-group">
         <label for="description" class="control-label">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @meal.description %>">
+          <input type="text" id="description" name="description" placeholder="Description" class="form-control" value=" ">
       </div>
 
       <button class="btn btn-success">
