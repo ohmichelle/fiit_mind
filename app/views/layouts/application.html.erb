@@ -49,13 +49,16 @@
           <li><a href="/weight_loss_models"><i class="fa fa-heart"></i>
             <span class="hidden-sm">Weight Loss Models</span></a>
           </li>
-          <li><a href="/info">Info</a></li>
 
           <% if user_signed_in? %>
             <li><a href="/users/<%= current_user.id %>"><i class="fa fa-user"></i>
-              <span class="hidden-sm">My Data</span></a>
+              <span class="hidden-sm">My Profile</span></a>
             </li>
           <% end %>
+
+          <li><a href="/info"><i class="fa fa-info-circle"></i>
+            <span class="hidden-sm">Info</span></a>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
