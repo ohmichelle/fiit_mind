@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   def index
-    @meals = Meal.all
+    @meals = Meal.joins(:daily_record).order("daily_records.date DESC").where(:daily_record_id => current_user.daily_records.select(:id))
   end
 
   def show
