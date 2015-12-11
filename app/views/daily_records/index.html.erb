@@ -26,7 +26,15 @@
           Date
         </label>
 
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @date %>">
+        <div class="input-group date" id='datepicker1'>
+         <input type="text" id="date" name="date" placeholder="Date" class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+        </div>
+
+        <script type="text/javascript">
+          $(function () {
+            $('#datepicker1').datepicker({todayBtn: "linked"});
+          });
+        </script>
       </div>
 
       <!-- Label and input for weight -->

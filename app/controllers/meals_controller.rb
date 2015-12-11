@@ -18,6 +18,7 @@ class MealsController < ApplicationController
     @meal.fullness_score = params[:fullness_score]
     @meal.description = params[:description]
 
+    #add if logic to make sure daily_record created
     @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
 
     if @meal.save
