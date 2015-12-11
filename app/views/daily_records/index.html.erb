@@ -2,27 +2,18 @@
   <h1>Track</h1>
 </div>
 
-<!-- Add Daily Record -->
+<!-- Set Date for Page -->
 <div class="row">
   <div class="col-md-12">
-    <!-- Add new daily_record -->
-    <form action="/create_daily_record" method="post" class="form-inline">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
-      </div>
+    <h2>Choose Date</h2>
+    <form action"/create_daily_record/day" class="form-inline">
 
       <!-- Label and input for date/calendar datepicker -->
       <div class="form-group">
-        <label for="date" class="control-label">Date</label>
-
-        <!-- <input type="text" id="date" name="date" placeholder="date" class="form-control" value="<%= @daily_record.date %>"> -->
+        <label for="date" class="control-label">Choose Date</label>
 
         <div class="input-group date" id='datepicker' data-date-format="yyyy-mm-dd">
-         <input type="text" id="date" name="date" placeholder="Date" class="form-control">
+         <input type="text" id="date" name="date" placeholder="Master Date Here" class="form-control" value="<%= params[:date] %>">
          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
         </div>
 
@@ -31,6 +22,33 @@
             $('#datepicker').datepicker({todayBtn: "linked"});
             })
         </script>
+      </div>
+
+      <!-- Submit button -->
+      <button class="btn btn-success">
+        Set Date
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Set Weight -->
+<div class="row">
+  <div class="col-md-12">
+
+    <!-- Set Date for Entire Page -->
+    <form action="/update_daily_record/<%= DailyRecord.find_by(:date => Date.today, :user_id => current_user.id).id %>" method="post" class="form-inline">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+      </div>
+
+      <!-- Label and input for master date -->
+      <div class="form-group">
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= params[:date] %>">
       </div>
 
       <!-- Label and input for weight -->
@@ -43,14 +61,14 @@
       </div>
 
       <button class="btn btn-success">
-        Create Daily Record
+        Set Weight
       </button>
       or
       <a href="/daily_records">Cancel</a>
+
     </form>
   </div>
 </div>
-
 <hr>
 
 <!-- Add Meals -->
@@ -60,28 +78,28 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for daily_record_id -->
+      <!-- Label and input for date -->
       <div class="form-group">
-        <label for="daily_record_id" class="control-label">Date</label>
-        <input type="text" id="date" name="date" placeholder="<%= @daily_record.date %>" class="form-control" value="<%= @date %>">
+        <label for="date" class="control-label">Date</label>
+        <input type="text" id="date" name="date" placeholder="<%= params[:date] %>" class="form-control" value="<%= @date %>">
       </div>
 
       <!-- Label and input for meal number/position -->
       <div class="form-group">
         <label for="position" class="control-label">Position</label>
-          <input type="text" id="position" name="position" placeholder="Position" class="form-control" value=" ">
+          <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @meal.position %>">
       </div>
 
       <!-- Label and input for fullness_score -->
       <div class="form-group">
         <label for="fullness_score" class="control-label">Fullness score</label>
-          <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value=" ">
+          <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value="<%= @meal.fullness_score %>">
       </div>
 
       <!-- Label and input for description -->
       <div class="form-group">
         <label for="description" class="control-label">Description</label>
-          <input type="text" id="description" name="description" placeholder="Description" class="form-control" value=" ">
+          <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @meal.description %>">
       </div>
 
       <button class="btn btn-success">
