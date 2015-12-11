@@ -6,91 +6,56 @@
       <h3><%= current_user.username %></h3>
     </div>
 
-    <a href="/photos/new" class="btn btn-default btn-block">
-        <i class="fa fa-plus"></i>
-    </a>
-
     <hr>
 
-    <% Photo.where({:user_id => current_user.id}).each do |photo| %>
-      <tr>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= photo.user.username %>
-              <small><%= time_ago_in_words(photo.updated_at) %> ago</small></h3>
-          </div>
-          <div class="panel-body">
-            <a href="/photos/<%= photo.id %>">
-            <img src="<%= photo.image %>" class="img-responsive"></a>
+    <div class="row">
+      <div class="col-md-12">
+        <dl class="dl-horizontal">
+          <dt>Email</dt>
+          <dd><%= @user.email %></dd>
 
-              <ul class="media-list">
-                <li class="media">
-                  <div class="media-left">
-                  </div>
-                  <div class="media-body">
+          <dt>Name</dt>
+          <dd><%= @user.first_name + " " + @user.last_name%></dd>
 
-                  <!-- Likes for photo -->
-                  <% if(photo.fans.where(:id => current_user.id).exists?) %>
-                    <form action="/delete_like/<%= Like.where(:user_id => current_user.id, :photo_id => photo.id).first.id  %>">
-                    <button class="btn btn-link">
-                      <i class="fa fa-heart"></i></a>
-                    </button>
-                    </form>
+          <dt>DOB</dt>
+          <dd><%= @user.dob%></dd>
 
-                  <% else %>
-                    <form action="/create_like" method="post">
-                      <!-- Hidden input for authenticity token to protect from forgery -->
-                      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                      <input type="hidden" id="photo_id" name="photo_id" class="form-control" value="<%= photo.id %>">
-                      <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
-                      <button class="btn btn-link">
-                        <i class="fa fa-heart-o"></i></a>
-                      </button>
-                    </form>
-                  <% end %>
+          <dt>Gender</dt>
+          <dd><%= @user.gender%></dd>
 
-                  <% if(photo.fans.exists?) %>
-                    <%= photo.fans.pluck(:username).to_sentence %>
-                      <% if(photo.fans.pluck(:username).count > 1) %>
-                        like this</h1>
-                      <% else %>
-                        likes this</h1>
-                      <% end %>
-                  <% else %>
-                    be the first to like this
-                  <% end %>
+          <dt>Height</dt>
+          <dd><%= @user.height_inches %></dd>
 
-                  <!-- List of user comments for this photo -->
-                    <% photo.comments.each do |comment| %>
-                      <h6 class="text-primary">
-                        <a href="#"><%= comment.user.username %></a>
-                        <small><%= time_ago_in_words(comment.updated_at) %> ago</small></h6>
-                        <%= comment.body %>
-                    <% end %>
+          <dt>Starting Weight</dt>
+          <dd><%= @user.weight_starting_lbs %></dd>
 
-                    <!-- Add New Comment -->
-                    <form action="/create_comment" method="post">
-                      <!-- Hidden input for authenticity token to protect from forgery -->
-                      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-                      <input type="hidden" id="photo_id" name="photo_id" class="form-control" value="<%= photo.id %>">
-                      <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>">
+          <dt>Goal Weight</dt>
+          <dd><%= @user.weight_goal_lbs %></dd>
 
-                      <!-- Label and input for body -->
-                      <div class="form-group">
-                        <label for="body" class="control-label">
-                        </label>
-                        <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" value="<%= @comment.body %>">
-                      </div>
+          <dt>Activity Level</dt>
+          <dd><%= @user.activity_level %></dd>
 
-                    </form>
+          <dt>Zip</dt>
+          <dd><%= @user.zip %></dd>
 
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </tr>
-      <% end %>
+        </dl>
+
+        <div class="btn-group btn-group-justified">
+          <a href="/users" class="btn btn-primary">
+            Back
+          </a>
+          <a href="/users/<%= @user.id %>/edit" class="btn btn-warning">
+            Edit
+          </a>
+          <a href="/delete_user/<%= @user.id %>" class="btn btn-danger" rel="nofollow">
+            Delete
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+
     </table>
   </div>
 </div>
