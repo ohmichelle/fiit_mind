@@ -13,8 +13,8 @@
         <th>Meal #</th>
         <th>Fullness score</th>
         <th>Description</th>
-        <th>Actions</th>
         <th>User ID</th>
+        <th>Actions</th>
       </tr>
 
       <% @meals.each do |meal| %>
@@ -29,6 +29,39 @@
           <a href="/meals/<%= meal.id %>" class="btn btn-primary">Show</a>
           <a href="/meals/<%= meal.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_meal/<%= meal.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<!-- Display Daily Record -->
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Daily Record ID</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>Weight</th>
+        <th>Average fullness</th>
+        <th>Weight loss probability</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @daily_records.each do |daily_record| %>
+      <tr>
+        <td><%= daily_record.id %></td>
+        <td><%= daily_record.user.username %></td>
+        <td><%= daily_record.date %></td>
+        <td><%= daily_record.weight %></td>
+        <td><%= daily_record.average_fullness %></td>
+        <td><%= daily_record.weight_loss_probability %></td>
+        <td>
+          <a href="/daily_records/<%= daily_record.id %>" class="btn btn-primary">Show</a>
+          <a href="/daily_records/<%= daily_record.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_daily_record/<%= daily_record.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>

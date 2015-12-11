@@ -1,0 +1,5 @@
+<%= DailyRecord.find_by(:date => params[:date], :user_id => current_user.id).id %>
+
+<%= link_to "Back", :back, class: "btn btn-link btn-block" %>
+
+Meal.where(:daily_record_id => "7").sum("meals.fullness_score")

@@ -1,6 +1,7 @@
 class MealsController < ApplicationController
   def index
     @meals = Meal.joins(:daily_record).order("daily_records.date DESC").where(:daily_record_id => current_user.daily_records.select(:id))
+    @daily_records = DailyRecord.all
   end
 
   def show
@@ -13,13 +14,17 @@ class MealsController < ApplicationController
 
   def create
     # Parameters: {"authenticity_token"=> "", "position"=>"1", "fullness_score"=>"5", "description"=>"rice", "daily_record_id"=>"1"}
+
     @meal = Meal.new
+    @date = params[:date]
     @meal.position = params[:position]
     @meal.fullness_score = params[:fullness_score]
     @meal.description = params[:description]
 
-    #add if logic to make sure daily_record created
     @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
+
+    #add if logic to make sure daily_record created
+
 
     if @meal.save
       redirect_to "/daily_records", :notice => "Meal created successfully."

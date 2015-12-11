@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   # CREATE
   get "/daily_records/new", :controller => "daily_records", :action => "new"
   post "/create_daily_record", :controller => "daily_records", :action => "create"
+  get "/create_daily_record/day", :controller => "daily_records", :action => "create_day"
 
   # READ
   get "/daily_records", :controller => "daily_records", :action => "index"
