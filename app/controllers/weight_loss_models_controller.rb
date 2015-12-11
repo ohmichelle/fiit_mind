@@ -1,6 +1,10 @@
 class WeightLossModelsController < ApplicationController
   def index
     @weight_loss_models = WeightLossModel.all
+
+    # Weight Loss Model: Probability of losing weight
+    @wlp = 1/(1+Math::E**(-5.7+DailyRecord.average_fullness))
+
   end
 
   def show

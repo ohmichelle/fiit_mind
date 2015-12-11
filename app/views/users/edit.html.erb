@@ -9,94 +9,123 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit User #<%= @user.id %></h3>
+  <h3>Edit Profile</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_user/<%= @user.id %>" method="post">
+    <form action="/update_user/<%= @user.id %>" method="post" class="form-horizontal">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for first name -->
       <div class="form-group">
-        <label for="first_name" class="control-label">
+        <label for="first_name" class="col-sm-2 control-label">
           First Name
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="first_name" name="first_name" placeholder="First Name" class="form-control" value="<%= @user.first_name %>">
+        </div>
       </div>
 
       <!-- Label and input for last name -->
       <div class="form-group">
-        <label for="last_name" class="control-label">
+        <label for="last_name" class="col-sm-2 control-label">
           Last Name
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="last_name" name="last_name" placeholder="Last Name" class="form-control" value="<%= @user.last_name %>">
+        </div>
       </div>
 
       <!-- Label and input for dob -->
       <div class="form-group">
-        <label for="dob" class="control-label">
+        <label for="dob" class="col-sm-2 control-label">
           DOB
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="dob" name="dob" placeholder="DOB" class="form-control" value="<%= @user.dob %>">
+        </div>
       </div>
 
       <!-- Label and input for gender -->
       <div class="form-group">
-        <label for="gender" class="control-label">
+        <label for="gender" class="col-sm-2 control-label">
           Gender
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="gender" name="gender" placeholder="Fullness score" class="form-control" value="<%= @user.gender %>">
+        </div>
       </div>
 
       <!-- Label and input for height -->
       <div class="form-group">
-        <label for="height_inches" class="control-label">
+        <label for="height_inches" class="col-sm-2 control-label">
           Height (inches)
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="height_inches" name="height_inches" placeholder="Height" class="form-control" value="<%= @user.height_inches %>">
+        </div>
       </div>
 
       <!-- Label and input for weight_starting_lbs -->
       <div class="form-group">
-        <label for="weight_starting_lbs" class="control-label">
+        <label for="weight_starting_lbs" class="col-sm-2 control-label">
           Starting Weight
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="weight_starting_lbs" name="weight_starting_lbs" placeholder="Starting Weight" class="form-control" value="<%= @user.weight_starting_lbs %>">
+        </div>
       </div>
 
       <!-- Label and input for weight_goal_lbs -->
       <div class="form-group">
-        <label for="weight_goal_lbs" class="control-label">
+        <label for="weight_goal_lbs" class="col-sm-2 control-label">
           Goal Weight
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="weight_goal_lbs" name="weight_goal_lbs" placeholder="Goal Weight" class="form-control" value="<%= @user.weight_goal_lbs %>">
+        </div>
       </div>
 
       <!-- Label and input for activity_level -->
       <div class="form-group">
-        <label for="activity_level" class="control-label">
+        <label for="activity_level" class="col-sm-2 control-label">
           Activity Level
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="activity_level" name="activity_level" placeholder="Activity Level" class="form-control" value="<%= @user.activity_level %>">
+        </div>
       </div>
 
       <!-- Label and input for zip -->
       <div class="form-group">
-        <label for="zip" class="control-label">
+        <label for="zip" class="col-sm-2 control-label">
           Zip Code
         </label>
 
+        <div class="col-sm-10">
         <input type="text" id="zip" name="zip" placeholder="Zip Code" class="form-control" value="<%= @user.zip %>">
+        </div>
+      </div>
+
+      <!-- Label and input for Image -->
+      <div class="form-group">
+        <label for="image" class="col-sm-2 control-label">
+          Image URL
+        </label>
+
+        <div class="col-sm-10">
+        <input type="text" id="image" name="image" placeholder="Image URL" class="form-control" value="<%= @user.image %>">
+        </div>
       </div>
 
       <button class="btn btn-warning">

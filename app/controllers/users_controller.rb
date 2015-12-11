@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     @user.weight_goal_lbs = params[:weight_goal_lbs]
     @user.activity_level = params[:activity_level]
     @user.zip = params[:zip]
+    @user.image = params[:image]
 
     if @user.save #AND date.valid_date?()
       redirect_to "/users/#{@user.id}", :notice => "User updated successfully."
