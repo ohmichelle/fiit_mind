@@ -23,7 +23,7 @@ class DailyRecordsController < ApplicationController
   def create_day
     # Parameters: {"date"=>"2015-12-09"}
     if current_user.daily_records.find_by(:date => params[:date])
-      @daily_record = DailyRecord.find_by(:date => params[:date])
+      @daily_record = DailyRecord.find_by(:date => params[:date], :user_id => current_user.id)
       redirect_to "/daily_records/#{@daily_record.id}"
     else
       @daily_record = DailyRecord.new
@@ -41,7 +41,7 @@ class DailyRecordsController < ApplicationController
 
   def create
     if current_user.daily_records.find_by(:date => params[:date])
-      @daily_record = DailyRecord.find_by(:date => params[:date])
+      @daily_record = DailyRecord.find_by(:date => params[:date], :user_id => current_user.id)
 
       @daily_record.weight = params[:weight]
 
