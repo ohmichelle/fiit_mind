@@ -1,5 +1,6 @@
+
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-12">
     <div class="jumbotron">
       <h3><%= @user.username %></h3>
     </div>
@@ -7,42 +8,52 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3 col-md-offset-2">
+  <div class="col-md-4">
     <a href="/users/<%= @user.id %>">
       <img src="<%= @user.image %>" class="img-responsive img-thumbnail">
     </a>
   </div>
-  <div class="col-md-5">
-    <dl class="dl-horizontal">
-      <dt>Email</dt>
-      <dd><%= @user.email %></dd>
+  <div class="col-md-8">
+    <table class="table table-hover">
+      <tr>
+        <td><strong>Email</strong></td>
+        <td><%= @user.email %></td>
+      </tr>
+      <tr>
+        <td><strong>Name</strong></td>
+        <td><%= @user.first_name + " " + @user.last_name%></td>
+      </tr>
+      <tr>
+        <td><strong>DOB</strong></td>
+        <td><%= @user.dob%></td>
+      </tr>
+      <tr>
+        <td><strong>Gender</strong></td>
+        <td><%= @user.gender%></td>
+      </tr>
+      <tr>
+        <td><strong>Height</strong></td>
+        <td><%= @user.height_inches %></td>
+      </tr>
+      <tr>
+        <td><strong>Starting Weight</strong></td>
+        <td><%= @user.weight_starting_lbs %></td>
+      </tr>
+      <tr>
+        <td><strong>Goal Weight</strong></td>
+        <td><%= @user.weight_goal_lbs %></td>
+      </tr>
+      <tr>
+        <td><strong>Zip</strong></td>
+        <td><%= @user.zip %></td>
+      </tr>
 
-      <dt>Name</dt>
-      <dd><%= @user.first_name + " " + @user.last_name%></dd>
+    </table>
+  </div>
+</div>
 
-      <dt>DOB</dt>
-      <dd><%= @user.dob%></dd>
-
-      <dt>Gender</dt>
-      <dd><%= @user.gender%></dd>
-
-      <dt>Height</dt>
-      <dd><%= @user.height_inches %></dd>
-
-      <dt>Starting Weight</dt>
-      <dd><%= @user.weight_starting_lbs %></dd>
-
-      <dt>Goal Weight</dt>
-      <dd><%= @user.weight_goal_lbs %></dd>
-
-      <dt>Activity Level</dt>
-      <dd><%= @user.activity_level %></dd>
-
-      <dt>Zip</dt>
-      <dd><%= @user.zip %></dd>
-
-    </dl>
-
+<div class="row">
+  <div class="col-md-12">
     <div class="btn-group btn-group-justified">
       <a href="/users" class="btn btn-primary">
         Back

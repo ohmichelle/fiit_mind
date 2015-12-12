@@ -1,6 +1,16 @@
 <div class="page-header">
-  <h1>Track</h1>
-  <!-- Insert weight loss probability -->
+ <br>
+ <h1>Track</h1>
+
+ <% if !@daily_record.weight_loss_probability.nil? %>
+   <% if @daily_record.weight_loss_probability <0.4  %>
+     <h2 style = "color:red;" > <%= (@daily_record.weight_loss_probability*100)%>%  Chance of Losing Weight</h2>
+   <% elsif @daily_record.weight_loss_probability <0.6  %>
+     <h2 style = "color:orange;" > <%= (@daily_record.weight_loss_probability*100)%>%  Chance of Losing Weight</h2>
+   <% elsif @daily_record.weight_loss_probability <1 %>
+     <h2 style = "color:green;" > <%= (@daily_record.weight_loss_probability*100)%>%  Chance of Losing Weight</h2>
+   <% end %>
+  <% end %>
 </div>
 
 <!-- Set Date for Page -->
