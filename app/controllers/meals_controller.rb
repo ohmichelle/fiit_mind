@@ -48,8 +48,15 @@ class MealsController < ApplicationController
 
     @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
 
+    @daily_record = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id})
+
     if @meal.save
-      redirect_to "/daily_records/#{@meal.daily_record_id}", :notice => "Meal updated successfully."
+      @daily_record.average_fullness = Meal.where(:daily_record_id => @daily_record.id).average("fullness_score").round(2)
+
+      @daily_record.weight_loss_probability = (1/(1+Math::E**(-5.7+@daily_record.average_fullness))).round(2)
+
+      @daily_record.save
+        redirect_to "/daily_records/#{@meal.daily_record_id}", :notice => "Meal updated successfully."
     else
       render 'edit', :alert => "Meal was not updated. Please try again."
     end
