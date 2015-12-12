@@ -146,9 +146,9 @@
         <td><%= meal.description %></td>
         <td><%= meal.daily_record.date %></td>
         <td>
-          <a href="/meals/<%= meal.id %>" class="btn btn-primary">Show</a>
-          <a href="/meals/<%= meal.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_meal/<%= meal.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/meals/<%= meal.id %>" class="btn btn-primary"><i class="fa fa-search-plus"></a></i>
+          <a href="/meals/<%= meal.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
+          <a href="/delete_meal/<%= meal.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i>
         </td>
       </tr>
       <% end %>
@@ -180,9 +180,9 @@
         <td><%= @daily_record.average_fullness %></td>
         <td><%= @daily_record.weight_loss_probability %></td>
         <td>
-          <a href="/daily_records/<%= @daily_record.id %>" class="btn btn-primary">Show</a>
-          <a href="/daily_records/<%= @daily_record.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/daily_records/<%= @daily_record.id %>" class="btn btn-primary"><i class="fa fa-search-plus"></a></i>
+          <a href="/daily_records/<%= @daily_record.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
+          <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i>
         </td>
       </tr>
 
