@@ -100,7 +100,7 @@
 
       <!-- Label and input for fullness_score -->
       <div class="form-group">
-        <label for="fullness_score" class="control-label">Fullness Score</label>
+        <label for="fullness_score" class="control-label">Fullness Score <a href="/info"><i class="fa fa-info-circle"></i></a></label>
           <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value="<%= @meal.fullness_score %>">
       </div>
 
@@ -163,20 +163,21 @@
         <th>Actions</th>
       </tr>
 
+      <% @daily_records.each do |daily_record| %>
       <tr>
-        <td><%= @daily_record.date %></td>
-        <td><%= @daily_record.weight %></td>
-        <td><%= @daily_record.average_fullness %></td>
-        <td><%= @daily_record.weight_loss_probability %></td>
+        <td><%= daily_record.date %></td>
+        <td><%= daily_record.weight %></td>
+        <td><%= daily_record.average_fullness %></td>
+        <td><%= daily_record.weight_loss_probability %></td>
         <td>
-          <a href="/daily_records/<%= @daily_record.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
+          <a href="/daily_records/<%= daily_record.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
 
           <!-- DAILY RECORDS NOT ALLOWED TO BE DELETED -->
           <!-- <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i> -->
 
         </td>
       </tr>
-
+      <% end %>
     </table>
   </div>
 </div>
