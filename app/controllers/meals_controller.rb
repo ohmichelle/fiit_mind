@@ -31,7 +31,7 @@ class MealsController < ApplicationController
       @daily_record.save
         redirect_to "/daily_records/#{@meal.daily_record_id}", :notice => "Meal created successfully."
     else
-      redirect_to "/daily_records/#{@meal.daily_record_id}", :alert => "Meal was not created, position already taken. Please try again with another position number."
+      redirect_to "/daily_records/#{@meal.daily_record_id}", :alert => "Meal was not created. Please try again."
     end
   end
 

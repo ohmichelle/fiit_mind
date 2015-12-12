@@ -162,21 +162,20 @@
         <th>Actions</th>
       </tr>
 
-      <% @daily_records.each do |daily_record| %>
       <tr>
-        <td><%= daily_record.id %></td>
-        <td><%= daily_record.user.username %></td>
-        <td><%= daily_record.date %></td>
-        <td><%= daily_record.weight %></td>
-        <td><%= daily_record.average_fullness %></td>
-        <td><%= daily_record.weight_loss_probability %></td>
+        <td><%= @daily_record.id %></td>
+        <td><%= @daily_record.user_id %></td>
+        <td><%= @daily_record.date %></td>
+        <td><%= @daily_record.weight %></td>
+        <td><%= @daily_record.average_fullness %></td>
+        <td><%= @daily_record.weight_loss_probability %></td>
         <td>
-          <a href="/daily_records/<%= daily_record.id %>" class="btn btn-primary">Show</a>
-          <a href="/daily_records/<%= daily_record.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_daily_record/<%= daily_record.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/daily_records/<%= @daily_record.id %>" class="btn btn-primary">Show</a>
+          <a href="/daily_records/<%= @daily_record.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
-      <% end %>
+
     </table>
   </div>
 </div>

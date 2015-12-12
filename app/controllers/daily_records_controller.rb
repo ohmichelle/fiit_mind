@@ -1,8 +1,7 @@
 class DailyRecordsController < ApplicationController
   def index
     @daily_record = DailyRecord.new
-    @daily_records = current_user.daily_records.where(:date => params[:date])
-    #@daily_record = DailyRecord.find_by(:date => "2015-12-10", :user_id => current_user.id)
+    @daily_records = current_user.daily_records
 
     @meals = Meal.joins(:daily_record).order("daily_records.date DESC").where(:daily_record_id => @daily_records.select(:id))
     @meal = Meal.new
