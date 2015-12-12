@@ -52,21 +52,14 @@ daily_records = DailyRecord.all
 daily_records.each do |daily_record|
   meal = Meal.new
   meal.daily_record_id = daily_record.id
-  meal.position = 4
+  meal.position = 1
   meal.fullness_score = rand(1..10)
   meal.description = meal_hashes[rand(0..12)][:description]
   meal.save
 
   meal = Meal.new
   meal.daily_record_id = daily_record.id
-  meal.position = 5
-  meal.fullness_score = rand(1..10)
-  meal.description = meal_hashes[rand(0..12)][:description]
-  meal.save
-
-  meal = Meal.new
-  meal.daily_record_id = daily_record.id
-  meal.position = 6
+  meal.position = 2
   meal.fullness_score = rand(1..10)
   meal.description = meal_hashes[rand(0..12)][:description]
   meal.save
