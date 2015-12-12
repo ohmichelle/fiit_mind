@@ -55,7 +55,8 @@ class DailyRecordsController < ApplicationController
 
   def update
     #Parameters: {""user_id"=>"1", "date"=>"2015-12-10", "weight"=>"111", "id"=>"1"}
-    @daily_record = DailyRecord.find_by(:date => params[:date], :user_id => current_user.id)
+    #@daily_record = DailyRecord.find_by(:date => params[:date], :user_id => current_user.id)
+    @daily_record = DailyRecord.find(params[:id])
 
     @daily_record.user_id = params[:user_id]
     @daily_record.date = params[:date]

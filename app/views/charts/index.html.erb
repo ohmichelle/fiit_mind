@@ -1,31 +1,30 @@
-
-
 <h1>Charts</h1>
 
-<%= form_for(@daily_record) do |f| %>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_field :date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <a href="/charts/weight" class="btn btn-primary">Weight</a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="/charts/fullness" class="btn btn-warning">Fullness</a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="/charts/model_history" class="btn btn-danger">Model History</a>
+      </div>
+    </div>
+<hr>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-  $("#daily_record").submit();
-  });
+<!-- Line Chart: Daily Weight over time by user -->
+<h2>Weight</h2>
+<%= line_chart @daily_records.group(:date).average(:weight) %>
 
-  $(document).ready(function(){
-    $.ajax({
-      url: $('#daily_record').attr('action'),
-      success: function(data){
-        alert(data);
-      },
-      error: function(){
-        alert('failure');
-      }
-    });
-  });
-</script>
+<h2>Fullness</h2>
+<%= line_chart @daily_records.group(:date).average(:average_fullness) %>
+
+<h2>Model History: Weight Loss Probability</h2>
+<%= line_chart @daily_records.group(:date).average(:weight_loss_probability) %>
+
+
+
+

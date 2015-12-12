@@ -7,7 +7,9 @@ gem 'bootstrap-datepicker-rails'
 
 #Add chartkick
 gem 'chartkick', '~> 1.4', '>= 1.4.1'
-gem 'groupdate'
+
+#Add dateslices (groupdate sub for sqlite3)
+gem 'dateslices', '~> 0.0.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

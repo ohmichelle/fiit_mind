@@ -15,7 +15,10 @@
   </style>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "//www.google.com/jsapi" %>
+  <%= javascript_include_tag "application", "chartkick" %>
+  <%= yield :charts_js %>
+
   <%= csrf_meta_tags %>
 
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -45,6 +48,9 @@
           </li>
           <li><a href="/daily_records"><i class="fa fa-calendar"></i>
             <span class="hidden-sm">Daily Records</span></a>
+          </li>
+          <li><a href="/charts"><i class="fa fa-bar-chart-o"></i>
+            <span class="hidden-sm">History</span></a>
           </li>
           <li><a href="/weight_loss_models"><i class="fa fa-heart"></i>
             <span class="hidden-sm">Weight Loss Models</span></a>

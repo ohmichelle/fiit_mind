@@ -1,11 +1,21 @@
 class ChartsController < ApplicationController
   def index
     @daily_records = current_user.daily_records
-    @daily_record = DailyRecord.new
+  end
 
-    @meals = Meal.where(:daily_record_id => @daily_records.select(:id))
-    @meal = Meal.new
+  def weight
+    @daily_records = current_user.daily_records
+    @daily_records_sorted = DailyRecord.order("daily_records.date DESC").where(:user_id => current_user.id)
+  end
 
-    @date = Date.today
+  def fullness
+    @daily_records = current_user.daily_records
+    @meals = Meal.joins(:daily_record).order("daily_records.date DESC").where(:daily_record_id => current_user.daily_records.select(:id))
+
+  end
+
+  def model_history
+    @daily_records = current_user.daily_records
+    @daily_records_sorted = DailyRecord.order("daily_records.date DESC").where(:user_id => current_user.id)
   end
 end

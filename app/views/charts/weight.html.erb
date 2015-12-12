@@ -1,0 +1,50 @@
+<h1>Charts</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group">
+        <a href="/charts/weight" class="btn btn-primary">Weight</a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="/charts/fullness" class="btn btn-warning">Fullness</a>
+      </div>
+      <div class="btn-group" role="group">
+        <a href="/charts/model_history" class="btn btn-danger">Model History</a>
+      </div>
+    </div>
+<hr>
+
+<!-- Line Chart: Daily Weight over time by user -->
+<h2>Weight</h2>
+<%= line_chart @daily_records.group(:date).average(:weight) %>
+
+<!-- Display Daily Record -->
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Date</th>
+        <th>Weight (lbs)</th>
+        <th>Average fullness</th>
+        <th>Weight loss probability</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @daily_records_sorted.each do |daily_record| %>
+      <tr>
+        <td><%= daily_record.date %></td>
+        <td><%= daily_record.weight %></td>
+        <td><%= daily_record.average_fullness %></td>
+        <td><%= daily_record.weight_loss_probability %></td>
+        <td>
+          <a href="/daily_records/<%= daily_record.id %>" class="btn btn-primary"><i class="fa fa-search-plus"></a></i>
+          <a href="/daily_records/<%= daily_record.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
+          <a href="/delete_daily_record/<%= daily_record.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+

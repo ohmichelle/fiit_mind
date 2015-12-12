@@ -77,10 +77,13 @@ Rails.application.routes.draw do
 
  #------------------------------
 
-  # Routes for the Chart resource:
+  # Routes for the History/Chart resource:
 
   # READ
   get "/charts", :controller => "charts", :action => "index"
+  get "/charts/weight", :controller => "charts", :action => "weight"
+  get "/charts/fullness", :controller => "charts", :action => "fullness"
+  get "/charts/model_history", :controller => "charts", :action => "model_history"
   #get "/users/:id", :controller => "users", :action => "show"
 
 end
