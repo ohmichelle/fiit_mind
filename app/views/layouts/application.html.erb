@@ -43,17 +43,14 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/meals"><i class="fa fa-cutlery"></i>
-            <span class="hidden-sm">Meals</span></a>
+          <li><a href="/info"><i class="fa fa-info-circle"></i>
+            <span class="hidden-sm">Info</span></a>
           </li>
-          <li><a href="/daily_records"><i class="fa fa-calendar"></i>
-            <span class="hidden-sm">Daily Records</span></a>
+          <li><a href="/daily_records"><i class="fa fa-cutlery"></i>
+            <span class="hidden-sm">Track</span></a>
           </li>
           <li><a href="/charts"><i class="fa fa-bar-chart-o"></i>
             <span class="hidden-sm">History</span></a>
-          </li>
-          <li><a href="/weight_loss_models"><i class="fa fa-heart"></i>
-            <span class="hidden-sm">Weight Loss Models</span></a>
           </li>
 
           <% if user_signed_in? %>
@@ -62,9 +59,6 @@
             </li>
           <% end %>
 
-          <li><a href="/info"><i class="fa fa-info-circle"></i>
-            <span class="hidden-sm">Info</span></a>
-          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
