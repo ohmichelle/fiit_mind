@@ -9,7 +9,12 @@ class DailyRecordsController < ApplicationController
   end
 
   def show
+    #Pulls specific daily record, creates meals
     @daily_record = DailyRecord.find(params[:id])
+    @daily_records = current_user.daily_records
+
+    @meals = @daily_record.meals
+    @meal = Meal.new
   end
 
   def new
@@ -18,34 +23,42 @@ class DailyRecordsController < ApplicationController
 
   def create_day
     # Parameters: {"date"=>"2015-12-09"}
-    #if current_user.daily_records.find_by(:date => params[:date])
-   #   @daily_record = DailyRecord.find_by(:date => params[:date])
-   # else
+    if current_user.daily_records.find_by(:date => params[:date])
+      @daily_record = DailyRecord.find_by(:date => params[:date])
+      redirect_to "/daily_records/#{@daily_record.id}"
+    else
       @daily_record = DailyRecord.new
-    #end
+      @daily_record.user_id = current_user.id
+      @daily_record.date = params[:date]
+      @daily_record.weight = 0
 
-    @daily_record.user_id = current_user.id
-    @daily_record.date = params[:date]
-
-    @daily_record.save
-    redirect_to "/daily_records", :notice => "Master date set."
+      if @daily_record.save
+        redirect_to "/daily_records/#{@daily_record.id}", :notice => "Master date set."
+      else
+        redirect_to "/daily_records", :alert => "Master date not set. Please try again."
+      end
+    end
   end
 
   def create
-    #if current_user.daily_records.find_by(:date => params[:date])
-    #  @daily_record = DailyRecord.find_by(:date => params[:date])
-    #else
-      @daily_record = DailyRecord.new
-    #end
+    if current_user.daily_records.find_by(:date => params[:date])
+      @daily_record = DailyRecord.find_by(:date => params[:date])
 
-    @daily_record.user_id = current_user.id
-    @daily_record.date = params[:date]
-    @daily_record.weight = params[:weight]
+      @daily_record.weight = params[:weight]
 
-    if @daily_record.save
-      redirect_to "/daily_records", :notice => "Daily record created successfully."
+      @daily_record.save
+      redirect_to "/daily_records/#{@daily_record.id}", :notice => "Daily record updated successfully."
     else
-      render 'index'
+      @daily_record = DailyRecord.new
+      @daily_record.user_id = current_user.id
+      @daily_record.date = params[:date]
+      @daily_record.weight = params[:weight]
+
+      if @daily_record.save
+        redirect_to "/daily_records/#{@daily_record.id}", :notice => "Daily record created successfully."
+      else
+        redirect_to "/daily_records/#{@daily_record.id}", :alert => "Daily record was not created."
+      end
     end
   end
 

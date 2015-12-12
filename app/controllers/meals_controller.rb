@@ -16,20 +16,22 @@ class MealsController < ApplicationController
     # Parameters: {"authenticity_token"=> "", "position"=>"1", "fullness_score"=>"5", "description"=>"rice", "daily_record_id"=>"1"}
 
     @meal = Meal.new
-    @date = params[:date]
     @meal.position = params[:position]
     @meal.fullness_score = params[:fullness_score]
     @meal.description = params[:description]
 
-    @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
-
-    #add if logic to make sure daily_record created
-
+    @daily_record = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id})
+    @meal.daily_record_id = @daily_record.id
 
     if @meal.save
-      redirect_to "/daily_records", :notice => "Meal created successfully."
+      @daily_record.average_fullness = Meal.where(:daily_record_id => @daily_record.id).average("fullness_score").round(2)
+
+      @daily_record.weight_loss_probability = (1/(1+Math::E**(-5.7+@daily_record.average_fullness))).round(2)
+
+      @daily_record.save
+        redirect_to "/daily_records/#{@meal.daily_record_id}", :notice => "Meal created successfully."
     else
-      render 'new'
+      redirect_to "/daily_records/#{@meal.daily_record_id}", :alert => "Meal was not created, position already taken. Please try again with another position number."
     end
   end
 
