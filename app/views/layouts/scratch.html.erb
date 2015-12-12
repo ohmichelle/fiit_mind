@@ -32,3 +32,42 @@ Meal.where(:daily_record_id => "7").sum("meals.fullness_score")
     });
   });
 </script>
+
+
+application.html.erb
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "//www.google.com/jsapi" %>
+<%= javascript_include_tag "application", "chartkick" %>
+<%= yield :charts_js %>
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <ul class="nav navbar-nav">
+    <li><a href="/info"><i class="fa fa-info-circle"></i>
+      <span class="hidden-sm">Info</span></a>
+    </li>
+    <li><a href="/daily_records"><i class="fa fa-cutlery"></i>
+      <span class="hidden-sm">Track</span></a>
+    </li>
+    <li><a href="/charts"><i class="fa fa-bar-chart-o"></i>
+      <span class="hidden-sm">History</span></a>
+    </li>
+
+    <% if user_signed_in? %>
+      <li><a href="/users/<%= current_user.id %>"><i class="fa fa-user"></i>
+        <span class="hidden-sm">My Profile</span></a>
+      </li>
+    <% end %>
+
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      <li><a href="/users/edit"><i class="fa fa-pencil-square-o"></i><%= current_user.username %></a></li>
+      <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+    <% else %>
+      <li><a href="/users/sign_in">Sign In</a></li>
+      <li><a href="/users/sign_up">Sign Up</a></li>
+    <% end %>
+  </ul>
+</div><!-- /.navbar-collapse -->
