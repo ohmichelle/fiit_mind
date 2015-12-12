@@ -74,7 +74,7 @@ class DailyRecordsController < ApplicationController
     @daily_record.date = params[:date]
     @daily_record.weight = params[:weight]
 
-    @daily_record.average_fullness = Meal.where(:daily_record_id => @daily_record.id).average(meals.fullness_score).round(2)
+    @daily_record.average_fullness = (Meal.where(:daily_record_id => @daily_record.id).average("fullness_score")).round(2)
 
     @daily_record.weight_loss_probability = (1/(1+Math::E**(-5.7+@daily_record.average_fullness))).round(2)
 
