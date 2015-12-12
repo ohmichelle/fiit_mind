@@ -180,7 +180,9 @@
         <td><%= @daily_record.weight_loss_probability %></td>
         <td>
           <a href="/daily_records/<%= @daily_record.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
-          <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i>
+
+          <!-- DAILY RECORDS NOT ALLOWED TO BE DELETED -->
+          <!-- <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i> -->
         </td>
       </tr>
 
