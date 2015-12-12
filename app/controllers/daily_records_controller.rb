@@ -79,9 +79,9 @@ class DailyRecordsController < ApplicationController
     @daily_record.weight_loss_probability = (1/(1+Math::E**(-5.7+@daily_record.average_fullness))).round(2)
 
     if @daily_record.save
-      redirect_to "/daily_records", :notice => "Daily record updated successfully."
+      redirect_to "/daily_records/#{@daily_record.id}", :notice => "Daily record updated successfully."
     else
-      render 'edit'
+      render 'edit', :alert => "Daily record not updated. Please try again."
     end
   end
 
@@ -90,6 +90,6 @@ class DailyRecordsController < ApplicationController
 
     @daily_record.destroy
 
-    redirect_to "/daily_records", :notice => "Daily record deleted."
+    redirect_to "/daily_records/#{@daily_record.id}", :alert => "Daily record deleted."
   end
 end

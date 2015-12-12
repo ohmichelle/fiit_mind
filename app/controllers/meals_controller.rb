@@ -49,9 +49,9 @@ class MealsController < ApplicationController
     @meal.daily_record_id = DailyRecord.find_by({:date => params[:date], :user_id => current_user.id}).id
 
     if @meal.save
-      redirect_to "/meals", :notice => "Meal updated successfully."
+      redirect_to "/daily_records/#{@meal.daily_record_id}", :notice => "Meal updated successfully."
     else
-      render 'edit'
+      render 'edit', :alert => "Meal was not updated. Please try again."
     end
   end
 
@@ -60,6 +60,6 @@ class MealsController < ApplicationController
 
     @meal.destroy
 
-    redirect_to "/meals", :notice => "Meal deleted."
+    redirect_to "/daily_records/#{@meal.daily_record_id}", :alert => "Meal deleted."
   end
 end
