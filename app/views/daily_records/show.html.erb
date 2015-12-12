@@ -16,12 +16,12 @@
 <!-- Set Date for Page -->
 <div class="row">
   <div class="col-md-12">
-    <h2>Choose Date</h2>
+    <h4><strong>STEP 1: </strong>Choose Date</h4>
     <form action="/create_day" class="form-inline">
 
       <!-- Label and input for date/calendar datepicker -->
       <div class="form-group">
-        <label for="date" class="control-label">Choose Date</label>
+        <label for="date" class="control-label"></label>
 
         <div class="input-group date" id='datepicker' data-date-format="yyyy-mm-dd">
          <input type="text" id="date" name="date" placeholder="Master Date Here" class="form-control" value="<%= @daily_record.date %>">
@@ -43,10 +43,11 @@
   </div>
 </div>
 
+<hr>
 <!-- Set Weight -->
 <div class="row">
   <div class="col-md-12">
-
+  <h4><strong>STEP 2: </strong>Enter Today's Weight</h4>
     <form action="/create_daily_record" method="post" class="form-inline">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -58,14 +59,12 @@
 
       <!-- Label and input for master date -->
       <div class="form-group">
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @daily_record.date %>">
+        <input type="hidden" id="date" name="date" placeholder="Date" class="form-control" value="<%= @daily_record.date %>">
       </div>
 
       <!-- Label and input for weight -->
       <div class="form-group">
-        <label for="weight" class="control-label">
-          Weight
-        </label>
+        <label for="weight" class="control-label"></label>
 
         <input type="text" id="weight" name="weight" placeholder="Weight" class="form-control" value="<%= @daily_record.weight %>">
       </div>
@@ -73,8 +72,6 @@
       <button class="btn btn-success">
         Set Weight
       </button>
-      or
-      <a href="/daily_records">Cancel</a>
 
     </form>
   </div>
@@ -84,25 +81,26 @@
 <!-- Create Meals -->
 <div class="row">
   <div class="col-md-12">
+  <h4><strong>STEP 3: </strong>Add Today's Meals</h4>
     <form action="/create_meal" method="post" class="form-inline">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for date -->
       <div class="form-group">
-        <label for="date" class="control-label">Date</label>
-        <input type="text" id="date" name="date" placeholder="<%= params[:date] %>" class="form-control" value="<%= @daily_record.date %>">
+        <label for="date" class="control-label"></label>
+        <input type="hidden" id="date" name="date" placeholder="<%= params[:date] %>" class="form-control" value="<%= @daily_record.date %>">
       </div>
 
       <!-- Label and input for meal number/position -->
       <div class="form-group">
-        <label for="position" class="control-label">Position</label>
-          <input type="text" id="position" name="position" placeholder="Position" class="form-control" value="<%= @meal.position %>">
+        <label for="position" class="control-label">Meal #</label>
+          <input type="text" id="position" name="position" placeholder="Meal #" class="form-control" value="<%= @meal.position %>">
       </div>
 
       <!-- Label and input for fullness_score -->
       <div class="form-group">
-        <label for="fullness_score" class="control-label">Fullness score</label>
+        <label for="fullness_score" class="control-label">Fullness Score</label>
           <input type="text" id="fullness_score" name="fullness_score" placeholder="Fullness score" class="form-control" value="<%= @meal.fullness_score %>">
       </div>
 
@@ -115,8 +113,7 @@
       <button class="btn btn-success">
         Add Meal
       </button>
-      or
-      <a href="/meals">Cancel</a>
+
     </form>
   </div>
 </div>
@@ -128,23 +125,20 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Meal ID</th>
-        <th>User</th>
+        <th>Date</th>
         <th>Position</th>
-        <th>Fullness score</th>
+        <th>Fullness Score</th>
         <th>Description</th>
-        <th>Daily record</th>
         <th>Actions</th>
       </tr>
 
       <% @meals.each do |meal| %>
       <tr>
-        <td><%= meal.id %></td>
-        <td><%= meal.daily_record.user_id %></td>
+        <td><%= meal.daily_record.date %></td>
         <td><%= meal.position %></td>
         <td><%= meal.fullness_score %></td>
         <td><%= meal.description %></td>
-        <td><%= meal.daily_record.date %></td>
+
         <td>
           <a href="/meals/<%= meal.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil"></a></i>
           <a href="/delete_meal/<%= meal.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i>
@@ -162,18 +156,14 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Daily Record ID</th>
-        <th>User</th>
         <th>Date</th>
         <th>Weight</th>
-        <th>Average fullness</th>
-        <th>Weight loss probability</th>
+        <th>Average Fullness</th>
+        <th>Weight Loss Probability</th>
         <th>Actions</th>
       </tr>
 
       <tr>
-        <td><%= @daily_record.id %></td>
-        <td><%= @daily_record.user_id %></td>
         <td><%= @daily_record.date %></td>
         <td><%= @daily_record.weight %></td>
         <td><%= @daily_record.average_fullness %></td>
@@ -183,6 +173,7 @@
 
           <!-- DAILY RECORDS NOT ALLOWED TO BE DELETED -->
           <!-- <a href="/delete_daily_record/<%= @daily_record.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></a></i> -->
+
         </td>
       </tr>
 
